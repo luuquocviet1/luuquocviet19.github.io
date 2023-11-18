@@ -43,7 +43,7 @@ class NetCat:
                         if response:
                             print(response)
                             buffer = input('>')
-                            buffer += '/n'
+                            buffer += '\n'
                             self.socket.send(buffer.encode())
             except KeyboardInterrupt:
                 print('User terminated.')
@@ -83,7 +83,7 @@ class NetCat:
             while True:
                 try:
                     client_socket.send(b' #> ')
-                    while'/n' not in cmd_buffer.decode():
+                    while'\n' not in cmd_buffer.decode():
                         cmd_buffer += client_socket.recv(64)
                     response = execute(cmd_buffer.decode())
                     if response:
